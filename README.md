@@ -1,12 +1,42 @@
 # TARGET
 Interview Case Study for Target
 
+## Document Search Specifications
+
+The goal of this exercise is to create a working program to search a set of documents for the given search term or phrase (single token), and return results in order of relevance. 
+Relevancy is defined as number of times the exact term or phrase appears in the document. 
+
+Create three methods for searching the documents: 
+- Simple string matching
+- Text search using regular expressions
+- Preprocess the content and then search the index
+
+Prompt the user to enter a search term and search method, execute the search, and return results.
+
+For instance:
+
+![Output Example](/ExampleOutput.jpg "Output Example")
+
+Three files have been provided for you to read and use as sample search content.
+
+Run a performance test that does 2M searches with random search terms, and measures execution time. Which approach is fastest? Why?
+
+Provide some thoughts on what you would do on the software or hardware side to make this program scale to handle massive content and/or very large request volume (5000 requests/second or more). 
+
 
 # RESOURCES
-___
-- python read entire file - https://docs.python.org/2/library/functions.html#open
-- python timer - https://stackoverflow.com/questions/7421641/measuring-elapsed-time-in-python/13261556
-- python input loop -
-- python count elements - https://www.lucidar.me/en/python/count-elements/
-- markdown syntax - https://www.markdownguide.org/basic-syntax/#headings
+- python
+    - general reference - http://anh.cs.luc.edu/handsonPythonTutorial/index.html
+    - read entire file - https://docs.python.org/2/library/functions.html#open
+    - timer - https://stackoverflow.com/questions/7421641/measuring-elapsed-time-in-python/13261556
+    - input loop - https://stackoverflow.com/questions/23294658/asking-the-user-for-input-until-they-give-a-valid-response
+    - count elements - https://www.lucidar.me/en/python/count-elements/
+    - if-else - https://www.w3schools.com/python/python_conditions.asp
+    - regular expressions
+        - https://docs.python.org/2.7/library/re.html
+        - https://blog.teamtreehouse.com/regular-expressions-10-languages
+        
+- markdown syntax
+    - https://www.markdownguide.org/basic-syntax/
+    - https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
