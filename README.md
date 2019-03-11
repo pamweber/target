@@ -1,6 +1,30 @@
 # TARGET
 Interview Case Study for Target
 
+## Technical Assessment Case Studies
+The purpose of the Case Study is not only to gauge your technical ability, but also to see how you think.  We will talk through your results here and your logic.  The Case Study is not a make or break your candidacy for the role, but serve as a single data-point among your overall qualifications.  
+___
+Please complete one of following case studies:
+1.	myRetail RESTful service
+1.	Barren Land Analysis
+1.	Search
+___
+For the case study you choose please meet the following requirements:
+- Complete the exercise in the technical stack of your choice.
+    - When appropriate use a data store of your choice.
+    - Use any external frameworks you desire
+    - Be ready to discuss your recommendations to make your solution suitable for use in a production environment 
+
+- Provide evidence of the result to the interviewers (choose one)
+    - Unit test results or other documented output
+    - Hosted instance of the implementation
+    - Runnable instance of the implementation on your computer
+
+- The end result should be a functional implementation of the problem preferably with associated tests
+    - Provide the working code either in a publicly accessible hosted repository or a zip file containing all necessary build steps and dependencies
+    - Rename .js files to .js.txt if emailing code
+    - Provide a README.md file with instructions for testing, running and interacting with your application and any details you feel are relevant to share
+
 ## Document Search Specifications
 
 The goal of this exercise is to create a working program to search a set of documents for the given search term or phrase (single token), and return results in order of relevance. 
