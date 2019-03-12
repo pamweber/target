@@ -9,7 +9,7 @@ fileC = "warp_drive.txt"
 
 # initialize fields
 searchMethod = "" 
-searchTerm = ""
+searchString = ""
 file1Matches = 0
 file2Matches = 0
 file3Matches = 0
@@ -17,13 +17,20 @@ file1 = ""
 file2 = ""
 file3 = ""
 
-# ask user for the search term
-searchTerm = raw_input("Enter the search term: ")
-
-# verify that user entered a string of at least one character
-if len(searchTerm) < 1 :
-    print "You were supposed to enter a string for your search. Bye!"
-    exit()
+# give the user 3 tries to enter a search string of at least one character
+searchStringTries = 0
+while True:
+    searchString = raw_input("Enter the search term: ")       # ask user for the search string
+    if len(searchString) < 1 :                                # if user didn't enter anything, give them another try
+        print "Enter at least one character for your search. Please try again."
+        searchStringTries = searchStringTries + 1             # increment the number of tries
+        if searchStringTries > 2 :                            # if the user misses 3 times, exit the program
+            print "3 STRIKES AND YOU'RE OUT!  Good bye."
+            exit()
+        continue
+    else:
+        print "SearchString =", searchString
+        break
 
 # ask user for the search method
 searchMethod = raw_input("Enter the number for the desired search method - 1 (String Match), 2 (Regular Expression), or 3 (Indexed): ")
@@ -39,7 +46,6 @@ else:
     print "You were supposed to enter 1, 2, or 3 for search method.  Bye!"
     exit()
 
-print "Search Term = ",  searchTerm
 print "Search Method = ", searchMethod
 print "Search Type = ", searchType
 
@@ -50,7 +56,7 @@ try:
     fhandA = open(fileA,"r")
     print fhandA.read(), "\n"
     fhandA.close()
-except:
+except:  # print an error message and exit the program if the file can't be opened
     print "ERROR: First file (" + fileA + ") can't be opened.  Stopping program!\n"
     exit()
 
@@ -61,7 +67,7 @@ try:
     fhandB = open(fileB)
     print fhandB.read(), "\n"
     fhandA.close()
-except:
+except:  # print an error message and exit the program if the file can't be opened
     print "ERROR: Second file (" + fileB + ") can't be opened.  Stopping program!\n"
     exit()
 
@@ -72,7 +78,7 @@ try:
     fhandC = open(fileC)
     print fhandC.read(), "\n"
     fhandC.close()
-except:
+except:  # print an error message and exit the program if the file can't be opened
     print "ERROR: Third file (" + fileC + ") can't be opened.  Stopping program!\n"
     exit()
 
