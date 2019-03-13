@@ -17,44 +17,60 @@ file1 = ""
 file2 = ""
 file3 = ""
 
-# give the user 3 tries to enter a search string of at least one character
-searchStringTries = 0
-while True:
-    searchString = raw_input("Enter the search term: ")       # ask user for the search string
-    if len(searchString) < 1 :                                # if user didn't enter anything, give them another try
-        print "Enter at least one character for your search. Please try again."
-        searchStringTries = searchStringTries + 1             # increment the number of tries
-        if searchStringTries > 2 :                            # if the user misses 3 times, exit the program
-            print "3 STRIKES AND YOU'RE OUT!  Good bye."
-            exit()
-        continue
-    else:
-        print "SearchString =", searchString
-        break
+# give the user up to 3 tries to enter a search string of at least one character
+searchStringTries = 1
+while True :
+    if searchStringTries > 3 :
+        print "3 STRIKES AND YOU'RE OUT!  Good bye."
+        exit()        
+    else :
+        print "String Try Number", searchStringTries
+        searchString = raw_input("Enter the search term: ")     # ask user for the search string
+        if len(searchString) < 1 :                              # if user didn't enter anything, give them another try
+            searchStringTries = searchStringTries + 1           # increment the number of tries   
+            if searchStringTries < 3 :
+                print "Enter at least one character for your search. Please try again."
+        else :
+            break
+print "\nSearchString =", searchString
 
-# ask user for the search method
-searchMethod = raw_input("Enter the number for the desired search method - 1 (String Match), 2 (Regular Expression), or 3 (Indexed): ")
+# give the user 3 tries to select a valid search method
+searchMethodTries = 1
+while True :
+    if searchMethodTries > 3 :                                
+        print "3 STRIKES AND YOU'RE OUT!  Good bye."
+        exit()
+    else :
+        print "\nMethod Try Number", searchMethodTries
+        # ask user for the search method
+        searchMethod = raw_input("Enter the number for the desired search method - 1 (String Match), 2 (Regular Expression), or 3 (Indexed): ")
+        if len(searchMethod) < 1 :                                 
+            searchMethodTries = searchMethodTries + 1               # increment the number of tries
+            if searchStringTries < 3 :
+                print "You didn't enter a value.  Please try again."
+        elif searchMethod < "1" or searchMethod > "3" :
+            searchMethodTries = searchMethodTries + 1               # increment the number of tries
+            if searchMethodTries < 3 :
+                print "You were supposed to enter 1, 2, or 3 for search method.  Please try again."
+        else :
+            break
+        
 
-# verify that user entered a valid search method value
+# print the Search Method description
 if searchMethod == "1" :
     searchType = "StringMatch"
 elif searchMethod == "2" :
     searchType = "RegularExpression"
-elif searchMethod == "3" :
-    searchType = "Indexed"
-else:
-    print "You were supposed to enter 1, 2, or 3 for search method.  Bye!"
-    exit()
-
-print "Search Method = ", searchMethod
+else :
+    searchType = "Indexed" 
 print "Search Type = ", searchType
 
 # process the first file
 # **** initially, just reading and printing the file ****
-print "\n** PROCESSING 1ST FILE **\n"
+print "\n** PROCESSING 1ST FILE **"
 try:
     fhandA = open(fileA,"r")
-    print fhandA.read(), "\n"
+    print fhandA.read()
     fhandA.close()
 except:  # print an error message and exit the program if the file can't be opened
     print "ERROR: First file (" + fileA + ") can't be opened.  Stopping program!\n"
@@ -62,10 +78,10 @@ except:  # print an error message and exit the program if the file can't be open
 
 # process the second file
 # **** initially, just reading and printing the file ****
-print "\n** PROCESSING 2ND FILE **\n"
+print "** PROCESSING 2ND FILE **"
 try:
     fhandB = open(fileB)
-    print fhandB.read(), "\n"
+    print fhandB.read()
     fhandA.close()
 except:  # print an error message and exit the program if the file can't be opened
     print "ERROR: Second file (" + fileB + ") can't be opened.  Stopping program!\n"
@@ -73,10 +89,10 @@ except:  # print an error message and exit the program if the file can't be open
 
 # process the third file
 # **** initially, just reading and printing the file ****
-print "\n** PROCESSING 3RD FILE**\n"
+print "** PROCESSING 3RD FILE**"
 try:
     fhandC = open(fileC)
-    print fhandC.read(), "\n"
+    print fhandC.read()
     fhandC.close()
 except:  # print an error message and exit the program if the file can't be opened
     print "ERROR: Third file (" + fileC + ") can't be opened.  Stopping program!\n"
@@ -99,3 +115,4 @@ timerTotal = (timerStop-timerStart).microseconds
 print "Elapshed Time: ", timerTotal, "ms"
 
 quit()
+
