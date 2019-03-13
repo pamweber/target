@@ -7,7 +7,7 @@ ___
 Please complete one of following case studies:
 1.	myRetail RESTful service
 1.	Barren Land Analysis
-1.	Search
+1.	Search (SELECTED)
 ___
 For the case study you choose please meet the following requirements:
 - Complete the exercise in the technical stack of your choice.
@@ -49,6 +49,8 @@ Provide some thoughts on what you would do on the software or hardware side to m
 
 
 # RESOURCES
+- GitHub - https://github.com/pamweber/target/blob/master/README.md
+
 - python
     - general reference - http://anh.cs.luc.edu/handsonPythonTutorial/index.html
     - read entire file - https://docs.python.org/2/library/functions.html#open
