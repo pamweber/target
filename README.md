@@ -52,15 +52,19 @@ Provide some thoughts on what you would do on the software or hardware side to m
 - GitHub - https://github.com/pamweber/target/blob/master/README.md
 
 - python
+    - PYTHON FOR INFORMATICS (course book) - https://d28rh4a8wq0iu5.cloudfront.net/pythonlearn/book/book_270.pdf
     - general reference - http://anh.cs.luc.edu/handsonPythonTutorial/index.html
     - read entire file - https://docs.python.org/2/library/functions.html#open
     - timer - https://stackoverflow.com/questions/7421641/measuring-elapsed-time-in-python/13261556
     - input loop - https://stackoverflow.com/questions/23294658/asking-the-user-for-input-until-they-give-a-valid-response
-    - count elements - https://www.lucidar.me/en/python/count-elements/
-    - if-else - https://www.w3schools.com/python/python_conditions.asp
+    - if-elif-else - https://www.w3schools.com/python/python_conditions.asp
+    - count elements
+        - https://www.lucidar.me/en/python/count-elements/
+        - https://stackoverflow.com/questions/8899905/count-number-of-occurrences-of-a-given-substring-in-a-string/8900059
     - regular expressions
         - https://docs.python.org/2.7/library/re.html
         - https://blog.teamtreehouse.com/regular-expressions-10-languages
+        - https://stackoverflow.com/questions/1155617/count-the-number-occurrences-of-a-character-in-a-string
         
 - markdown syntax
     - https://www.markdownguide.org/basic-syntax/

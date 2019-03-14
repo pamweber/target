@@ -3,11 +3,12 @@
 # * PROGRAM AUTHOR:     Pam Weber                                              *
 # * LOCATION:           https://github.com/pamweber/target                     *
 # * INSTRUCTIONS:                                                              *
-# *     MacOS           1) open terminal                                       *
-# *                     2) navigate to folder with program and text files      *
-# *                     3) type 'python DocumentSearch.py' to run program      *
+# *     MacOS           1) copy program and text files to local drive          *
+# *                     2) open terminal                                       *
+# *                     3) navigate to folder with program and text files      *
+# *                     4) type 'python DocumentSearch.py' to run program      *
 # *                     4) respond to prompts                                  *
-# *                     5) evaluate results                                    *
+# *                     6) evaluate results                                    *
 # ******************************************************************************
 
 # IMPORT functions
@@ -107,8 +108,22 @@ elif searchMethod == "2" :
     fileCountA = len(re.findall(searchString,fileContentsA))
     fileCountB = len(re.findall(searchString,fileContentsB))
     fileCountC = len(re.findall(searchString,fileContentsC))
-else :
-    print "Using Search Method 3"
+else :    
+    fileCountA = 0
+    sub_len = len(searchString)
+    for i in range(len(fileContentsA)) :
+        if fileContentsA[i:i+sub_len] == searchString :
+            fileCountA += 1
+    fileCountB = 0
+    sub_len = len(searchString)
+    for i in range(len(fileContentsB)) :
+        if fileContentsB[i:i+sub_len] == searchString :
+            fileCountB += 1
+    fileCountC = 0
+    sub_len = len(searchString)
+    for i in range(len(fileContentsC)) :
+        if fileContentsC[i:i+sub_len] == searchString :
+            fileCountC += 1
 
 # SORT the search string counts in descending order
 def takeSecond(elem) :                                                      # a little function to retrieve second column
