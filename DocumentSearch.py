@@ -1,23 +1,34 @@
-# initialize and start timer
-import datetime as dt
-timerStart = dt.datetime.now()
+# ******************************************************************************
+# * PROGRAM NAME:       DocumentSearch.py                                      *
+# * PROGRAM AUTHOR:     Pam Weber                                              *
+# * LOCATION:           https://github.com/pamweber/target                     *
+# * INSTRUCTIONS:                                                              *
+# *     MacOS           1) open terminal                                       *
+# *                     2) navigate to folder with program and text files      *
+# *                     3) type 'python DocumentSearch.py' to run program      *
+# *                     4) respond to prompts                                  *
+# *                     5) evaluate results                                    *
+# ******************************************************************************
 
-# specify names of the files to be read
+# IMPORT functions
+import datetime as dt
+
+# SPECIFY names of the files to be read
 fileA = "french_armed_forces.txt"
 fileB = "hitchhikers.txt"
 fileC = "warp_drive.txt"
 
-# initialize fields
+# INITIALIZE fields
 searchMethod = "" 
 searchString = ""
-file1Matches = 0
-file2Matches = 0
-file3Matches = 0
-file1 = ""
-file2 = ""
-file3 = ""
+fileCountA = 0
+fileCountB = 0
+fileCountC = 0
+fileContentsA = ""
+fileContentsB = ""
+fileContentsC = ""
 
-# give the user up to 3 tries to enter a search string of at least one character
+# GET search string
 searchStringTries = 1
 print ""                                                         # print a blank line for readability
 while True :
@@ -33,9 +44,9 @@ while True :
                 print "Enter at least one character for your search. Please try again."
         else :
             break
-print "    You entered the following term for your search: ", searchString, "\n"
+# print "    You entered the following term for your search: ", searchString, "\n"
 
-# give the user 3 tries to select a valid search method
+# GET search method
 searchMethodTries = 1
 while True :
     if searchMethodTries > 3 :                                  # kick the user out of the program after 3 tries                                
@@ -43,7 +54,7 @@ while True :
         exit()
     else :
         # print "Method Try Number", searchMethodTries
-        searchMethod = raw_input("Enter the number for the desired search method - 1 (String Match), 2 (Regular Expression), or 3 (Indexed): ")  # ask user for the search method
+        searchMethod = raw_input("Search Method: 1) String Match 2) Regular Expression 3) Indexed: ")  # ask user for the search method
         if len(searchMethod) < 1 :                                 
             searchMethodTries = searchMethodTries + 1           # increment the number of tries
             if searchMethodTries < 4 :
@@ -61,59 +72,68 @@ while True :
             else :
                 searchType = "Indexed" 
             # print "    Search Method Description = ", searchType
-            print "    You selected the following search method: " + searchMethod + " (" + searchType + ")"
+            # print "    You selected the following search method: " + searchMethod + " (" + searchType + ")"
             break  
 
-# process the first file
-# **** initially, just reading and printing the file ****
-print "\n** PROCESSING 1ST FILE **"
+# START timer now that user has entered their responses - this eliminates user response time variable from the time measurement
+timerStart = dt.datetime.now()
+
+# READ the first file
 try:
     fhandA = open(fileA,"r")
-    print fhandA.read()
+    fileContentsA = fhandA.read()
     fhandA.close()
 except:  # print an error message and exit the program if the file can't be opened
     print "ERROR: First file (" + fileA + ") can't be opened.  Stopping program!\n"
     exit()
 
-# process the second file
-# **** initially, just reading and printing the file ****
-print "** PROCESSING 2ND FILE **"
+# READ the second file
 try:
-    fhandB = open(fileB)
-    print fhandB.read()
+    fhandB = open(fileB,"r")
+    fileContentsB = fhandB.read()
     fhandA.close()
 except:  # print an error message and exit the program if the file can't be opened
     print "ERROR: Second file (" + fileB + ") can't be opened.  Stopping program!\n"
     exit()
 
-# process the third file
-# **** initially, just reading and printing the file ****
-print "** PROCESSING 3RD FILE**"
+# READ the third file
 try:
-    fhandC = open(fileC)
-    print fhandC.read()
+    fhandC = open(fileC,"r")
+    fileContentsC = fhandC.read()
     fhandC.close()
 except:  # print an error message and exit the program if the file can't be opened
     print "ERROR: Third file (" + fileC + ") can't be opened.  Stopping program!\n"
     exit()
 
-# order file matches in descending order  
-# **** START using dummy assignments until coding is done ****
-file1 = fileB
-file2 = fileA
-file3 = fileC
-file1Matches = 10
-file2Matches = 7
-file3Matches = 2
-# **** END using dummy assignments until coding is done ****
+# COUNT occurrences of search string in each file based on selected search method
+if searchMethod == "1" :
+    # print "Using Search Method 1"
+    fileCountA = fileContentsA.count(searchString)
+    fileCountB = fileContentsB.count(searchString)
+    fileCountC = fileContentsC.count(searchString)
+elif searchMethod == "2" :
+    # print "Using Search Method 2"
+    import re
+    fileCountA = len(re.findall(searchString,fileContentsA))
+    fileCountB = len(re.findall(searchString,fileContentsB))
+    fileCountC = len(re.findall(searchString,fileContentsC))
+else :
+    print "Using Search Method 3"
 
-# print results
-print "** RESULTS LISTED IN DESCENDING ORDER **"
-print "  ", file1, " - ", file1Matches, "matches"
-print "  ", file2, " - ", file2Matches, "matches"
-print "  ", file3, " - ", file3Matches, "matches"
+# SORT the search string counts in descending order
+def takeSecond(elem):                                                       # little function to use second column
+    return elem[1]
+counts = [(fileA, fileCountA), (fileB, fileCountB), (fileC, fileCountC)]    # fill the list (a.k.a., array)
+counts.sort(key=takeSecond,reverse=True)                                   # sort list by second column in descending order
+# print "Sorted list:", counts                                                # print list
 
-# calculate and print run time in milliseconds
+# PRINT the results
+print "\nSearch Results"
+print "  ", counts[0][0], " - ", counts[0][1], "matches"
+print "  ", counts[1][0], " - ", counts[1][1], "matches"
+print "  ", counts[2][0], " - ", counts[2][1], "matches"
+
+# CALCULATE and print run time in milliseconds
 timerStop = dt.datetime.now()
 timerTotal = (timerStop-timerStart).microseconds
 print "\nElapsed Time: ", timerTotal, "ms\n"
