@@ -150,9 +150,9 @@ print "  ", counts[0][0], " - ", counts[0][1], "matches"
 print "  ", counts[1][0], " - ", counts[1][1], "matches"
 print "  ", counts[2][0], " - ", counts[2][1], "matches"
 
-# CALCULATE and print runtime in milliseconds
+# CALCULATE run time in microseconds then convert to milliseconds
 timerStop = dt.datetime.now()
-timerTotal = (timerStop-timerStart).microseconds
+timerTotal = (timerStop-timerStart).microseconds / float(1000) 
 print "\nElapsed Time: ", timerTotal, "ms\n"
 
 quit()
