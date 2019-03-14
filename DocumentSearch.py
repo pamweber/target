@@ -7,20 +7,61 @@
 # *                     2) open terminal                                       *
 # *                     3) navigate to folder with program and text files      *
 # *                     4) type 'python DocumentSearch.py' to run program      *
-# *                     4) respond to prompts                                  *
+# *                     5) respond to prompts                                  *
 # *                     6) evaluate results                                    *
 # ******************************************************************************
 
-# IMPORT functions
+# ******************************************************************************
+# IMPORT some handy Python functions
+# ******************************************************************************
+
 import datetime as dt                               # date time 
 import re                                           # regular expressions
 
-# SPECIFY names of the files to be read
+
+# ******************************************************************************
+# DEFINE some functions to streamline the code
+# ******************************************************************************
+
+# FUNCTION fileContents - read the contents of a file into a string
+def fileContents(fileName) :
+    try :
+        fhandA = open(fileName,"r")
+        fileContents = fhandA.read()
+        fhandA.close()
+        return fileContents
+    except :  # if the file can't be opened, print an error message and exit the program
+        print "ERROR: First file (" + fileName + ") can't be opened.  Stopping program!\n"
+        exit()
+
+# FUNCTION indexSearch - search for the search string using an index search
+def indexSearch(fileContents, searchString) :
+    fileCount = 0
+    sub_len = len(searchString)
+    for i in range(len(fileContents)) :
+        if fileContents[i:i+sub_len] == searchString :
+            fileCount += 1
+    indexSearch = fileCount
+    return indexSearch
+    
+# FUNCTION takeSecond - retrieve the second column of a 2 dimensional list
+def takeSecond(elem) :                                                      
+    return elem[1]
+
+
+# ******************************************************************************
+# SPECIFY names of the files to be read                                        *
+# ******************************************************************************
+
 fileA = "french_armed_forces.txt"
 fileB = "hitchhikers.txt"
 fileC = "warp_drive.txt"
 
-# INITIALIZE fields
+
+# ******************************************************************************
+# INITIALIZE fields                                                            *
+# ******************************************************************************
+
 searchMethod = "" 
 searchString = ""
 fileCountA = 0
@@ -30,7 +71,12 @@ fileContentsA = ""
 fileContentsB = ""
 fileContentsC = ""
 
-# GET search string
+
+# ******************************************************************************
+# Now for the program logic                                                    *
+# ******************************************************************************
+
+# ASK user for search string
 searchStringTries = 1
 print ""                                                         # print a blank line for readability
 while True :
@@ -48,7 +94,7 @@ while True :
              # got the search string so break out of while loop
              break
 
-# GET search method
+# ASK user for search method
 searchMethodTries = 1
 while True :
     if searchMethodTries > 3 :                                  # kick the user out of the program after 3 tries                                
@@ -69,65 +115,32 @@ while True :
              # got the search method so break out of while loop
             break  
 
-# START timer now that user has entered their responses - this eliminates user response time variable from the time measurement
+# Read all three files (using my fileContents function)
+fileContentsA = fileContents (fileA)
+fileContentsB = fileContents (fileB)
+fileContentsC = fileContents (fileC)
+
+# START timer here - eliminates variables in user response and file read times
 timerStart = dt.datetime.now()
-
-# READ the first file
-try :
-    fhandA = open(fileA,"r")
-    fileContentsA = fhandA.read()
-    fhandA.close()
-except :  # if the file can't be opened, print an error message and exit the program
-    print "ERROR: First file (" + fileA + ") can't be opened.  Stopping program!\n"
-    exit()
-
-# READ the second file
-try :
-    fhandB = open(fileB,"r")
-    fileContentsB = fhandB.read()
-    fhandA.close()
-except :  # if the file can't be opened, print an error message and exit the program
-    print "ERROR: Second file (" + fileB + ") can't be opened.  Stopping program!\n"
-    exit()
-
-# READ the third file
-try :
-    fhandC = open(fileC,"r")
-    fileContentsC = fhandC.read()
-    fhandC.close()
-except :  # if the file can't be opened, print an error message and exit the program
-    print "ERROR: Third file (" + fileC + ") can't be opened.  Stopping program!\n"
-    exit()
 
 # COUNT occurrences of search string in each file based on selected search method
 if searchMethod == "1" :
+    # do a string match search
     fileCountA = fileContentsA.count(searchString)
     fileCountB = fileContentsB.count(searchString)
     fileCountC = fileContentsC.count(searchString)
 elif searchMethod == "2" :
+    # do a regex search
     fileCountA = len(re.findall(searchString,fileContentsA))
     fileCountB = len(re.findall(searchString,fileContentsB))
     fileCountC = len(re.findall(searchString,fileContentsC))
-else :    
-    fileCountA = 0
-    sub_len = len(searchString)
-    for i in range(len(fileContentsA)) :
-        if fileContentsA[i:i+sub_len] == searchString :
-            fileCountA += 1
-    fileCountB = 0
-    sub_len = len(searchString)
-    for i in range(len(fileContentsB)) :
-        if fileContentsB[i:i+sub_len] == searchString :
-            fileCountB += 1
-    fileCountC = 0
-    sub_len = len(searchString)
-    for i in range(len(fileContentsC)) :
-        if fileContentsC[i:i+sub_len] == searchString :
-            fileCountC += 1
+else :
+    # do an index search (using my indexSearch function)
+    fileCountA = indexSearch(fileContentsA, searchString)
+    fileCountB = indexSearch(fileContentsB, searchString)
+    fileCountC = indexSearch(fileContentsC, searchString)
 
 # SORT the search string counts in descending order
-def takeSecond(elem) :                                                      # a little function to retrieve second column
-    return elem[1]
 counts = [(fileA, fileCountA), (fileB, fileCountB), (fileC, fileCountC)]    # fill the 2 dimensional list (a.k.a., array)
 counts.sort(key=takeSecond,reverse=True)                                    # sort list by second column in descending order
 
