@@ -107,7 +107,7 @@ while True :
             searchMethodTries = searchMethodTries + 1           # increment the number of tries
             if searchMethodTries < 4 :
                 print "You didn't enter a value.  Please try again."
-        elif searchMethod < "1" or searchMethod > "3" :
+        elif searchMethod not in ("1", "2", "3") :
             searchMethodTries = searchMethodTries + 1           # increment the number of tries
             if searchMethodTries < 4 :
                 print "You were supposed to enter 1, 2, or 3 for search method.  Please try again."
