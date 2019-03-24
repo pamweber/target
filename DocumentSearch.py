@@ -3,17 +3,7 @@
 # * PROGRAM AUTHOR:     Pam Weber                                              *
 # * LOCATION:           https://github.com/pamweber/target                     *
 # *                                                                            *
-# * CHANGES:            converted to Python 3                                  *
-# *                     converted to classes and methods for PyTest            *
-# *                                                                            *
-# * INSTRUCTIONS:                                                              *
-# *     MacOS           1) copy program file to local drive                    *
-# *                     2) copy data files to /data folder on local drive      *
-# *                     3) open terminal                                       *
-# *                     4) navigate to folder with program file                *
-# *                     5) type 'python DocumentSearch.py'                     *
-# *                     6) respond to prompts                                  *
-# *                     7) evaluate results                                    *
+# * INSTRUCTIONS:       Use DocumentSearch_run.py to execute the program       *
 # ******************************************************************************
 
 # ****************************************************************************** 
@@ -65,6 +55,10 @@ def funcTakeSecond(elem) :
 #           by selected type and then sort files into descending order
 # ******************************************************************************
 
+# ******************************************************************************
+# * Asks the user for the string that they want to count                       *
+# ******************************************************************************
+
 class clSearchString(object):
     
     # SEARCH STRING METHOD
@@ -93,6 +87,9 @@ class clSearchString(object):
         # RETURN the result
         return self.searchString
 
+# ******************************************************************************
+# * Asks the user for the search type that they want to run                    *
+# ******************************************************************************
 class clSearchType(object):
     
     # SEARCH TYPE METHOD
@@ -125,6 +122,10 @@ class clSearchType(object):
         # RETURN the result
         return self.searchType					
 
+# ******************************************************************************
+# * Count the number of times the search string occurs in each file,           *
+# * then sort the files based on the counts in descending order                *
+# ******************************************************************************
 class clCountSort(object):
 
     # COUNT AND SORT METHOD
@@ -189,36 +190,3 @@ class clCountSort(object):
         
         # RETURN the results as a tuple
         return self.fileName1,self.fileCount1,self.fileName2,self.fileCount2,self.fileName3,self.fileCount3,self.timerTotal
-
-
-# ******************************************************************************
-# EXECUTION CODE COMMENTED OUT FOR USE WITH PYTEST
-#    1) uncomment code below to manually run the program
-#    2) from terminal type  "python3 DocumentSearch2.py" 
-# ******************************************************************************
-
-# RUN the methSearchString and methSearchType methods,
-#   then pass the results to the methCountSort method
-
-s=clSearchString()                  #instantiate the Search String class
-searchString=s.methSearchString()   #get the search string
-
-t=clSearchType()                    #instantiate the Search Type class
-searchType=t.methSearchType()       #get the search type
-
-u=clCountSort()                     #instantiate the Count Sort class
-fileName1, fileCount1, fileName2, fileCount2, fileName3, fileCount3, timerResult = u.methCountSort(searchString,searchType)
-
-# alternate format eliminates the separate calls to the Search String and Search Type methods
-# fileName1, fileCount1, fileName2, fileCount2, fileName3, fileCount3, timerResult = u.methCountSort(s.methSearchString(),t.methSearchType())
-
-# PRINT the results
-print("\nSearch Results")
-print("  ", fileName1, " - ", fileCount1, "matches")
-print("  ", fileName2, " - ", fileCount2, "matches")
-print("  ", fileName3, " - ", fileCount3, "matches")
-
-print("\nElapsed Time: ", timerResult, "ms\n")
-
-# The quit statement doesn't work with PyTest
-quit()

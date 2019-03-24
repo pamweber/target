@@ -3,37 +3,67 @@ Interview Case Study for Target
 
 ## Environment
 
+This describes my technical environment for completing this exercise.
+
 - Hardware
     - MacBook Pro (Retina, 13-inch, Early 2015)
-    - Processor 3.1 GHz Intel Core i7
-    - Memory 16 GB 1867 MHz DDR3
+    - Processor : 3.1 GHz Intel Core i7
+    - Memory : 16 GB 1867 MHz DDR3
     - Operating System : macOS Mojave Version 10.14
 - IDE : Komodo Edit 11 (https://www.activestate.com/products/komodo-edit/)
 - Language : Python 3.7 (https://www.python.org)
 - Test Framework : PyTest 4.3.1 (https://docs.pytest.org/en/latest/)
 - Test Plugins
-    - pytest-repeat 0.8.0 (https://pypi.org/project/pytest-repeat/)
+    - pytest-repeat 0.8.0 : https://pypi.org/project/pytest-repeat/
 - Version Control
-    - Git version 2.15.0 : https://git-scm.com/downloads
+    - DVCS : Git version 2.15.0 for mac - https://git-scm.com/downloads
     - Git GUI : Atlassian SourceTree Version 3.1.1 (213) - https://www.atlassian.com/software/sourcetree
     - local git repository : /Users/pam/gitrepos/Target/target
     - GitHub repository : https://github.com/pamweber/target
     - this file: https://github.com/pamweber/target/blob/master/README.md
+- Personal documentation : Confluence Space running on local Confluence Server instance- (http://confluence:8080
 
 ## Approach
 
 My approach was as follows:
-1. Select case study - I decided to do Case Study 3 - Document Search because it seemed similar to the type of scripting I might be doing within a tool
-1. Select language - I selected Python for the language because:
+1. **Select case study** - I decided to do Case Study 3, Document Search, because it seemed similar to the type of scripting I might be doing within a tool
+1. **Select language** - I selected Python for the language because:
     - Python is frequently used for scripting
     - I had taken a basic Python course a few years ago and wanted to learn more about the language
-1. Write basic program - first challenge was to refresh my Python skills by writing the basic program logic
-1. Clean up the program - then I moved on to making the program a bit more elegant by adding some exception handling and functions
-1. Automate tests - I looked at Python unittest and pytest and decided to use pytest because it seemed easier and at the same time more robust
-1. Performance Test - I researched different ways to run the tests multiple times and in the process came across pytest-repeat which was extremely easy to implement
-1. Timers - Set up some timers around the multiple tests
-1. Input runtime variables - before I could get to the next step of randomizing the test input, I had to figure out how to provide test data at run time
-1. Random values - still working on this one
+1. **Write basic program** - first challenge was to refresh my Python skills by writing the basic program logic
+1. **Update Python** - I started with Python 2.7 which was on my MBP by default, then installed Python 3.7.2 and converted my code to Python 3
+1. **Clean up the program** - then I moved on to making the program a bit more elegant by adding some exception handling and functions 
+1. **Automate tests** - I looked at Python *unittest* and *pytest* and decided to use *pytest* because it seemed easier and at the same time more robust
+    - this required some additional refactoring of the program, such as the use of classes and methods
+1. **Performance Test** - I researched different ways to run the tests multiple times and in the process came across *pytest-repeat* which was extremely easy to implement
+    - execute the program 100 times:  pytest --count=100 DocumentSearch_test.py -v
+1. **Timers** - Set up some timers around the multiple tests
+1. **Input runtime variables** - before I could get to the next step of randomizing the test input, I had to figure out how to provide test data at run time
+1. **Random values** - still working on this one
+
+
+## Execution
+
+This describes how to execute the program.
+
+###Pre-requisites:
+1. Python 3
+1. pytest
+1. pytest-repeat
+1. Git
+1. Clone GitHub repository to local repository
+
+###Running the program
+
+1. To run the program stand-alone and enter search string and type:
+        python3 DocumentSearch_run.py
+1. To run a single test:
+        pytest DocumentSearch_test.py
+1. To run a single test with verbose output
+        pytest -v DocumentSearch_test.py
+1. To run the test file 2M times:
+        pytest --count=2000000 DocumentSearch_test.py
+
 
 ## Description of the Problem
 
