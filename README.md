@@ -4,29 +4,29 @@ Interview Case Study for Target
 ## Environment
 
 - Hardware
--- MacBook Pro (Retina, 13-inch, Early 2015)
--- Processor 3.1 GHz Intel Core i7
--- Memory 16 GB 1867 MHz DDR3
-- Operating System : macOS Mojave Version 10.14
-- IDE : Komodo Edit 11
-- Language : Python 3.7
-- Test Framework : PyTest 4.3.1 (/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pytest.py)
+    - MacBook Pro (Retina, 13-inch, Early 2015)
+    - Processor 3.1 GHz Intel Core i7
+    - Memory 16 GB 1867 MHz DDR3
+    - Operating System : macOS Mojave Version 10.14
+- IDE : Komodo Edit 11 (https://www.activestate.com/products/komodo-edit/)
+- Language : Python 3.7 (https://www.python.org)
+- Test Framework : PyTest 4.3.1 (https://docs.pytest.org/en/latest/)
 - Test Plugins
--- pytest-repeat 0.8.0 (https://pypi.org/project/pytest-repeat/)
+    - pytest-repeat 0.8.0 (https://pypi.org/project/pytest-repeat/)
 - Version Control
--- Git version 2.15.0
--- GUI : Atlassian SourceTree Version 3.1.1 (213)
--- local git repository : /Users/pam/gitrepos/Target/target
--- GitHub repository : https://github.com/pamweber/target
---- this file: https://github.com/pamweber/target/blob/master/README.md
+    - Git version 2.15.0 : https://git-scm.com/downloads
+    - Git GUI : Atlassian SourceTree Version 3.1.1 (213) - https://www.atlassian.com/software/sourcetree
+    - local git repository : /Users/pam/gitrepos/Target/target
+    - GitHub repository : https://github.com/pamweber/target
+    - this file: https://github.com/pamweber/target/blob/master/README.md
 
 ## Approach
 
 My approach was as follows:
 1. Select case study - I decided to do Case Study 3 - Document Search because it seemed similar to the type of scripting I might be doing within a tool
 1. Select language - I selected Python for the language because:
--- Python is frequently used for scripting
--- I had taken a basic Python course a few years ago and wanted to learn more about the language
+    - Python is frequently used for scripting
+    - I had taken a basic Python course a few years ago and wanted to learn more about the language
 1. Write basic program - first challenge was to refresh my Python skills by writing the basic program logic
 1. Clean up the program - then I moved on to making the program a bit more elegant by adding some exception handling and functions
 1. Automate tests - I looked at Python unittest and pytest and decided to use pytest because it seemed easier and at the same time more robust
