@@ -4,8 +4,6 @@
 # * LOCATION:           https://github.com/pamweber/target                     *
 # * USAGE:              used to run DocumentSearch.py                          *
 # * REQUIREMENTS:       python3                                                *
-# *                     pytest                                                 *
-# *                     pytest-repeat                                          *
 # *                                                                            *
 # * INSTRUCTIONS:                                                              *
 # *     MacOS           1) copy program files to local folder                  *

@@ -18,10 +18,10 @@ This describes my technical environment for completing this exercise.
 - Version Control
     - DVCS : Git version 2.15.0 for mac - https://git-scm.com/downloads
     - Git GUI : Atlassian SourceTree Version 3.1.1 (213) - https://www.atlassian.com/software/sourcetree
-    - local git repository : /Users/pam/gitrepos/Target/target
+    - Local git repository : /Users/pam/gitrepos/Target/target
     - GitHub repository : https://github.com/pamweber/target
     - this file: https://github.com/pamweber/target/blob/master/README.md
-- Personal documentation : Confluence Space running on local Confluence Server instance- (http://confluence:8080
+- Personal documentation : Confluence Space running on local Confluence Server instance - http://confluence:8080
 
 ## Approach
 
@@ -47,22 +47,24 @@ My approach was as follows:
 This describes how to execute the program.
 
 ###Pre-requisites:
-1. Python 3
-1. pytest
-1. pytest-repeat
-1. Git
+1. Install Python 3
+1. Install pytest
+1. Install pytest-repeat
+1. Install Git
 1. Clone GitHub repository to local repository
 
 ###Running the program
 
 1. To run the program stand-alone and enter search string and type:
         python3 DocumentSearch_run.py
-1. To run a single test:
+1. To run a three different tests:
         pytest DocumentSearch_test.py
-1. To run a single test with verbose output
+1. To run a test with verbose output
         pytest -v DocumentSearch_test.py
-1. To run the test file 2M times:
-        pytest --count=2000000 DocumentSearch_test.py
+1. To run a test with verbose output and print stndout 
+        pytest -v -s DocumentSearch_test.py
+1. To run a test  2M times:
+        pytest --count=2000000 DocumentSearch_type1_test.py
 
 
 ## Description of the Problem

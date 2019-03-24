@@ -1,5 +1,5 @@
 # ******************************************************************************
-# * PROGRAM NAME:       DocumentSearchClass.py                                 *
+# * PROGRAM NAME:       DocumentSearch.py                                      *
 # * PROGRAM AUTHOR:     Pam Weber                                              *
 # * LOCATION:           https://github.com/pamweber/target                     *
 # *                                                                            *
@@ -90,6 +90,7 @@ class clSearchString(object):
 # ******************************************************************************
 # * Asks the user for the search type that they want to run                    *
 # ******************************************************************************
+
 class clSearchType(object):
     
     # SEARCH TYPE METHOD
@@ -126,6 +127,7 @@ class clSearchType(object):
 # * Count the number of times the search string occurs in each file,           *
 # * then sort the files based on the counts in descending order                *
 # ******************************************************************************
+
 class clCountSort(object):
 
     # COUNT AND SORT METHOD
