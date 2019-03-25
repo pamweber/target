@@ -36,38 +36,59 @@ My approach was as follows:
 1. **Automate tests** - I looked at Python *unittest* and *pytest* and decided to use *pytest* because it seemed easier and at the same time more robust
     - this required some additional refactoring of the program, such as the use of classes and methods
 1. **Performance Test** - I researched different ways to run the tests multiple times and in the process came across *pytest-repeat* which was extremely easy to implement
-    - execute the program 100 times:  pytest --count=100 DocumentSearch_test.py -v
+    - execute the program 2M times:  pytest --count=2000000 DocumentSearch_type1_test.py
 1. **Timers** - Set up some timers around the multiple tests
-1. **Input runtime variables** - before I could get to the next step of randomizing the test input, I had to figure out how to provide test data at run time
-1. **Random values** - still working on this one
+1. **Input runtime variables** - in preparation for randomizing the test input, I created a new test module that accepts command line parameters and eliminated pytest-repeat
+1. **Random values** - I did not complete the portion of the exercise that would feed random search terms into the program
 
+## Files
 
-## Execution
+- **DocumentSearch.py** - the main program logic
+- **DocumentSearch_run.py** - used to run the main program
+    >python3 DocumentSearch_run.py
+- **DocumentSearch_test.py** - used to run three tests against the main program using PyTest
+    >pytest DocumentSearch_test.py -s
+- **DocumentSearch_load_test.py** - used to run multiple tests of the main program with command line arguments
+    >pytest DocumentSearch_load_test.py --term=<search term> --method=<search method> --times=<# of times to run> -s
+- *timer.txt* - used by DocumentSearch_load_test.py to accumulate the total run time in milliseconds
+- *conftest.py* - pytest configuration file used by DocumentSearch_load_test.py to capture command line arguments
+- **data folder** - contains the text files provided with the case study
+- **Output** - contains sample results from running DocumentSearch_load_test.py 
 
-This describes how to execute the program.
+## Executing Volumne Tests
 
-###Pre-requisites:
+This provides more details on running the volume tests using DocumentSearch_load_test.py.
+
+### Pre-requisites:
 1. Install Python 3
 1. Install pytest
 1. Install pytest-repeat
 1. Install Git
 1. Clone GitHub repository to local repository
 
-###Running the program
+### Running the program
 
 1. To run the program stand-alone and enter search string and type:
         python3 DocumentSearch_run.py
-1. To run a three different tests:
+1. To run three tests against predicted results:
         pytest DocumentSearch_test.py
 1. To run a test with verbose output
         pytest -v DocumentSearch_test.py
-1. To run a test with verbose output and print stndout 
+1. To run a test with verbose output and print stdout 
         pytest -v -s DocumentSearch_test.py
-1. To run a test  2M times:
-        pytest --count=2000000 DocumentSearch_type1_test.py
+1. To count and sort occurances of "the" using search method 1 repeated 500 times:
+        pytest DocumentSearch_load_test.py --term=the --method=1 --times=500 -s
+1. To count and sort occurances of "an" using search method 2 repeated 10,000 times:
+        pytest DocumentSearch_load_test.py --term=an --method=2 --times=10000 -s
+1. To count and sort occurances of "a" using search method 3 repeated 50,000 times:
+        pytest DocumentSearch_load_test.py --term=a --method=3 --times=50000 -s
 
+## Potential improvements
+1. Write volumne test output to a data structure for reporting
+1. Randomize search term for volume tests 
+1. Containerize the python environment for better metrics
 
-## Description of the Problem
+## Description of the Problem Assignment
 
 ### Technical Assessment Case Studies
 The purpose of the Case Study is not only to gauge your technical ability, but also to see how you think.  We will talk through your results here and your logic.  The Case Study is not a make or break your candidacy for the role, but serve as a single data-point among your overall qualifications.  
