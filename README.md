@@ -53,7 +53,9 @@ My approach was as follows:
 - **timer.txt** - used by DocumentSearch_load_test.py to accumulate the total run time in milliseconds
 - **conftest.py** - pytest configuration file used by DocumentSearch_load_test.py to capture command line arguments
 - **data folder** - contains the text files provided with the case study
-- **Output folder** - contains sample results from running DocumentSearch_load_test.py 
+- **Output folder** - contains sample results from running DocumentSearch_load_test.py
+- **README.md** - program documentation
+- **ExampleOutput.jpg** - sample output from the case study (inserted into README.md)
 
 ## Executing Volumne Tests
 
@@ -68,25 +70,43 @@ This provides more details on running the volume tests using DocumentSearch_load
 
 ### Running the program
 
-1. To run the program stand-alone and enter search string and type:
+- To run the program stand-alone and enter search string and type:
     >python3 DocumentSearch_run.py
-1. To run three tests against predicted results:
+- To run three tests against predicted results:
     >pytest DocumentSearch_test.py
-1. To run a test with verbose output
+- To run a test with verbose output
     >pytest -v DocumentSearch_test.py
-1. To run a test with verbose output and print stdout 
+- To run a test with verbose output and print stdout 
     >pytest -v -s DocumentSearch_test.py
-1. To count and sort occurances of "the" using search method 1 repeated 500 times:
+- To count and sort occurances of "the" using search method 1 repeated 500 times:
     >pytest DocumentSearch_load_test.py --term=the --method=1 --times=500 -s
-1. To count and sort occurances of "an" using search method 2 repeated 10,000 times:
+- To count and sort occurances of "an" using search method 2 repeated 10,000 times:
     >pytest DocumentSearch_load_test.py --term=an --method=2 --times=10000 -s
-1. To count and sort occurances of "a" using search method 3 repeated 50,000 times:
+- To count and sort occurances of "a" using search method 3 repeated 50,000 times:
     >pytest DocumentSearch_load_test.py --term=a --method=3 --times=50000 -s
+
+## Search Method Assessment
+
+When running a single search with each of the three search methods, the time differences did not seem significant.  However, as the volume of tests were ramped up, the differences in performance became much more obvious.
+
+The rankings of the three search methods are:
+1. The String Match search (method 1) was the fastest performer
+2. The Regular Expression search (method 2) ran 2 times longer than the String Match
+3. The Indexed search (method 3) was significantly slower than the other two methods
+
+The highest volume I was able to run on my computer was about 100,000.  Above that, my computer died.
+
+### Example:
+
+Search Term = an -- Search Method = 1 -- Number of runs = 10000 -- Total Time = 246.9890000000078 milliseconds
+Search Term = an -- Search Method = 2 -- Number of runs = 10000 -- Total Time = 439.5379999999754 milliseconds
+Search Term = an -- Search Method = 3 -- Number of runs = 10000 -- Total Time = 13568.140999999396 milliseconds
 
 ## Potential improvements
 1. Write volumne test output to a data structure for reporting
 1. Randomize search term for volume tests 
-1. Containerize the python environment for better metrics
+1. Containerize the python environment using Docker for distribution and better control of the environment
+1. Add a report option (--report=yes) to save more data (such as print lines that are currently commented out)
 
 ## Description of the Problem Assignment
 
