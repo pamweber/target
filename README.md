@@ -50,10 +50,10 @@ My approach was as follows:
     >pytest DocumentSearch_test.py -s
 - **DocumentSearch_load_test.py** - used to run multiple tests of the main program with command line arguments
     >pytest DocumentSearch_load_test.py --term=<search term> --method=<search method> --times=<# of times to run> -s
-- *timer.txt* - used by DocumentSearch_load_test.py to accumulate the total run time in milliseconds
-- *conftest.py* - pytest configuration file used by DocumentSearch_load_test.py to capture command line arguments
+- **timer.txt** - used by DocumentSearch_load_test.py to accumulate the total run time in milliseconds
+- **conftest.py** - pytest configuration file used by DocumentSearch_load_test.py to capture command line arguments
 - **data folder** - contains the text files provided with the case study
-- **Output** - contains sample results from running DocumentSearch_load_test.py 
+- **Output folder** - contains sample results from running DocumentSearch_load_test.py 
 
 ## Executing Volumne Tests
 
@@ -69,19 +69,19 @@ This provides more details on running the volume tests using DocumentSearch_load
 ### Running the program
 
 1. To run the program stand-alone and enter search string and type:
-        python3 DocumentSearch_run.py
+    >python3 DocumentSearch_run.py
 1. To run three tests against predicted results:
-        pytest DocumentSearch_test.py
+    >pytest DocumentSearch_test.py
 1. To run a test with verbose output
-        pytest -v DocumentSearch_test.py
+    >pytest -v DocumentSearch_test.py
 1. To run a test with verbose output and print stdout 
-        pytest -v -s DocumentSearch_test.py
+    >pytest -v -s DocumentSearch_test.py
 1. To count and sort occurances of "the" using search method 1 repeated 500 times:
-        pytest DocumentSearch_load_test.py --term=the --method=1 --times=500 -s
+    >pytest DocumentSearch_load_test.py --term=the --method=1 --times=500 -s
 1. To count and sort occurances of "an" using search method 2 repeated 10,000 times:
-        pytest DocumentSearch_load_test.py --term=an --method=2 --times=10000 -s
+    >pytest DocumentSearch_load_test.py --term=an --method=2 --times=10000 -s
 1. To count and sort occurances of "a" using search method 3 repeated 50,000 times:
-        pytest DocumentSearch_load_test.py --term=a --method=3 --times=50000 -s
+    >pytest DocumentSearch_load_test.py --term=a --method=3 --times=50000 -s
 
 ## Potential improvements
 1. Write volumne test output to a data structure for reporting
@@ -139,7 +139,7 @@ Provide some thoughts on what you would do on the software or hardware side to m
 
 # RESOURCES
 
-These are some of the resources I used in this exercise.
+Because this was a large learning effort for me, I made use of many online resources to refresh my knowledge of python and learn new skills.
 
 - python
     - PYTHON FOR INFORMATICS (course book) - https://d28rh4a8wq0iu5.cloudfront.net/pythonlearn/book/book_270.pdf
@@ -155,6 +155,18 @@ These are some of the resources I used in this exercise.
         - https://docs.python.org/2.7/library/re.html
         - https://blog.teamtreehouse.com/regular-expressions-10-languages
         - https://stackoverflow.com/questions/1155617/count-the-number-occurrences-of-a-character-in-a-string
+    - run time arguments with pytest
+        - https://docs.python.org/2/howto/argparse.html
+    - python testing
+        - https://realpython.com/python-testing/
+        - https://semaphoreci.com/community/tutorials/testing-python-applications-with-pytest
+    - classes, methods, and objects
+        - https://www.hackerearth.com/practice/python/object-oriented-programming/classes-and-objects-i/tutorial/
+        - https://docs.python.org/2/tutorial/classes.html
+    - installation of python 3 on a mac
+        - http://osxdaily.com/2018/06/13/how-install-update-python-3x-mac/
+    - Return multiple values from a function
+        - https://www.geeksforgeeks.org/g-fact-41-multiple-return-values-in-python/
         
 - markdown syntax
     - https://www.markdownguide.org/basic-syntax/
