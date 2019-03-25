@@ -1,0 +1,35 @@
+[pam@Pams-MacBook-Pro]$ ~/workspaces/Target-->pytest DocumentSearch_load_test.py --term=the --method=1 --times=100000 -s
+=========================================== test session starts ============================================
+platform darwin -- Python 3.7.2, pytest-4.3.1, py-1.8.0, pluggy-0.9.0
+rootdir: /Users/pam/workspaces/Target, inifile:
+plugins: repeat-0.8.0
+collected 3 items                                                                                          
+
+DocumentSearch_load_test.py ..
+Search Term = the -- Search Method = 1 -- Number of runs = 100000 -- Total Time = 4014.983999999582 milliseconds
+.
+======================================== 3 passed in 358.85 seconds ========================================
+
+[pam@Pams-MacBook-Pro]$ ~/workspaces/Target-->pytest DocumentSearch_load_test.py --term=the --method=2 --times=100000 -s
+=========================================== test session starts ============================================
+platform darwin -- Python 3.7.2, pytest-4.3.1, py-1.8.0, pluggy-0.9.0
+rootdir: /Users/pam/workspaces/Target, inifile:
+plugins: repeat-0.8.0
+collected 3 items                                                                                          
+
+DocumentSearch_load_test.py ..
+Search Term = the -- Search Method = 2 -- Number of runs = 100000 -- Total Time = 8230.646999999633 milliseconds
+.
+======================================== 3 passed in 379.57 seconds ========================================
+
+[pam@Pams-MacBook-Pro]$ ~/workspaces/Target-->pytest DocumentSearch_load_test.py --term=the --method=3 --times=100000 -s
+=========================================== test session starts ============================================
+platform darwin -- Python 3.7.2, pytest-4.3.1, py-1.8.0, pluggy-0.9.0
+rootdir: /Users/pam/workspaces/Target, inifile:
+plugins: repeat-0.8.0
+collected 3 items                                                                                          
+
+DocumentSearch_load_test.py ..
+Search Term = the -- Search Method = 3 -- Number of runs = 100000 -- Total Time = 149886.64999999778 milliseconds
+.
+======================================== 3 passed in 357.35 seconds ========================================

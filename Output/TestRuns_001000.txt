@@ -1,0 +1,35 @@
+[pam@Pams-MacBook-Pro]$ ~/workspaces/Target-->pytest DocumentSearch_load_test.py --term=an --method=1 --times=10000 -s
+=========================================== test session starts ============================================
+3.7.2, pytest-4.3.1, py-1.8.0, pluggy-0.9.0
+rootdir: /Users/pam/workspaces/Target, inifile:
+plugins: repeat-0.8.0
+collected 3 items                                                                                                                                                                                      
+
+DocumentSearch_load_test.py ..
+Search Term = an -- Search Method = 1 -- Number of runs = 10000 -- Total Time = 246.9890000000078 milliseconds
+.
+========================================= 3 passed in 15.15 seconds =========================================
+
+[pam@Pams-MacBook-Pro]$ ~/workspaces/Target-->pytest DocumentSearch_load_test.py --term=an --method=2 --times=10000 -s
+=========================================== test session starts ============================================
+platform darwin -- Python 3.7.2, pytest-4.3.1, py-1.8.0, pluggy-0.9.0
+rootdir: /Users/pam/workspaces/Target, inifile:
+plugins: repeat-0.8.0
+collected 3 items                                                                                                                                                                                      
+
+DocumentSearch_load_test.py ..
+Search Term = an -- Search Method = 2 -- Number of runs = 10000 -- Total Time = 439.5379999999754 milliseconds
+.
+========================================= 3 passed in 15.23 seconds =========================================
+
+[pam@Pams-MacBook-Pro]$ ~/workspaces/Target-->pytest DocumentSearch_load_test.py --term=an --method=3 --times=10000 -s
+=========================================== test session starts ============================================
+platform darwin -- Python 3.7.2, pytest-4.3.1, py-1.8.0, pluggy-0.9.0
+rootdir: /Users/pam/workspaces/Target, inifile:
+plugins: repeat-0.8.0
+collected 3 items                                                                                                                                                                                      
+
+DocumentSearch_load_test.py ..
+Search Term = an -- Search Method = 3 -- Number of runs = 10000 -- Total Time = 13568.140999999396 milliseconds
+.
+========================================= 3 passed in 29.58 seconds =========================================
